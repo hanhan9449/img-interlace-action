@@ -1,7 +1,7 @@
 name: 'Img Interlace Action'
 description: 'Make your img interlace(large, but good user feeling)'
-icon: bar-chart
-color: green
+icon: 'bar-chart'
+color: 'green'
 inputs:
   folder-root:  # id of input
     description: 'Root folder path, default "/"'
