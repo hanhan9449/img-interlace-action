@@ -1,0 +1,23 @@
+name: 'Img Interlace Action'
+description: 'Make your img interlace(large, but good user feeling)'
+inputs:
+  folder-root:  # id of input
+    description: 'Root folder path, default "/"'
+    required: true
+    default: './'
+runs:
+  using: "composite"
+  steps:
+    - run: echo folder-root ${{ inputs.folder-root }}
+      shell: bash
+    - uses: actions/checkout@v4
+    - run: ${{ github.action_path }}/interlace.sh ${{ inputs.folder-root }}
+      name: run shell script to make image interlace
+      shell: bash
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5
+      with:
+        commit-message: "feat: make image interlace"
+        title: "[AutoCreate]使图片交错 make image interlace"
+        body: "图片交错编码，能够更快的下载展示"
+        branch: autocreate/image-interlace
